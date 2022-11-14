@@ -42,9 +42,8 @@ new Vue({
 		
 	},
 	methods:{
-		changeSlide(){
+	
 			
-		}
 
 	}
 
