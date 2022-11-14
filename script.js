@@ -42,7 +42,9 @@ new Vue({
 		
 	},
 	methods:{
-		changeSlide():
+		changeSlide(){
+			
+		}
 
 	}
 
