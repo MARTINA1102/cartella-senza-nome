@@ -4,8 +4,9 @@
 	box-sizing: border-box;
 }
 
-body {
+.background {
 	height: 100vh;
+	background-size: cover;
 }
 
 .container-blur {

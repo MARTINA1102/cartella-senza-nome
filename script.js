@@ -8,7 +8,7 @@ Consigli del giorno:
 - il riciclo spesso va a braccetto con le funzioni! Sapendole sfruttare bene, l'esercizio si riduce a poche righe ;)
 */
 new Vue({
-	el:'.container-blur',
+	el:'.background',
 	data:{
 		arrImages: [
 			{
@@ -39,15 +39,54 @@ new Vue({
 		],
 		activeIndex:0,
 		direction:1,
+		idInterval:0,
+		isAutoplayActive:true,
+		timeSlider:1.5 *1000,
 		
 	},
 	methods:{
-	
-			
+		changeSlide(direction) {
+			if (direction > 0) {
+				this.activeIndex++;
+				if (this.activeIndex === this.arrImages.length) {
+					this.activeIndex = 0;
+				}
+			} else {
+				if (this.activeIndex === 0) {
+					this.activeIndex = this.arrImages.length;
+				}
+				this.activeIndex--;
+			}
+		},
+		setActiveIndex(index) {
+			this.activeIndex = index;
+		},
+		controlAutoplay() {
+			if (this.isAutoplayActive) {
+				this.stopAutoplay();
+			} else {
+				this.startAutoplay()
+			}
+		},
+		stopAutoplay() {
+			clearInterval(this.idInterval);
+			this.isAutoplayActive = false;
+		},
+		startAutoplay() {
+			this.idInterval = setInterval(() => this.changeSlide(this.direction), this.timeSlider);
+			this.isAutoplayActive = true;
+		},
+		invertAutoplay() {
+			this.direction *= -1;
+		}
+	},
 
+	
+	mounted(){
+		this.startAutoplay();
 	}
 
-})
+});
 
 
 
